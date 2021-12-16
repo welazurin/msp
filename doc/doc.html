@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1250"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.2.2.2 (Windows)"/>
+	<meta name="created" content="2021-12-15T18:13:46.765000000"/>
+	<meta name="changed" content="2021-12-15T18:34:49.155000000"/>
+	<style type="text/css">
+		h2.cjk { font-family: "NSimSun" }
+		h2.ctl { font-family: "Lucida Sans" }
+		h3.cjk { font-family: "NSimSun" }
+		h3.ctl { font-family: "Lucida Sans" }
+	</style>
+</head>
+<body lang="pl-PL" dir="ltr"><p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<h1 style="margin-left: 2cm">Vector</h1>
+<p style="margin-left: 2cm"><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-left: 2cm"><font face="Liberation Serif, serif"><font size="5" style="font-size: 18pt"><b>DEFINITION</b></font></font></h2>
+<p style="margin-left: 4cm">Vector jest zdefiniowany dla
+następujących typów, funkcje między typami różnią się dopiskiem
+*_typ, 
+</p>
+<p style="margin-left: 4cm">poniższa tabela przedstawia wszystkie
+dostępne typy dla vectora</p>
+<dl>
+	<dl>
+		<dl>
+			<dl>
+				<dl>
+					<dl>
+						<dd>
+						<table width="404" cellpadding="4" cellspacing="0" style="page-break-inside: avoid">
+							<col width="150"/>
+
+							<col width="236"/>
+
+							<tr valign="top">
+								<td width="150" style="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p align="center">
+									<b>TYP</b></p>
+								</td>
+								<td width="236" style="border: 1px double #808080; padding: 0.1cm"><p align="center">
+									<b>Przykład funkcji</b></p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									double</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									long double</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_long_double()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									float</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_float()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									int</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_int()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									unsigned int</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_uint()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									long int</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_long_int()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									unsigned long int</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_long_uint()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									short int</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_short_int()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									unsigned char</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_uchar()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									char</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_char()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									complex float</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_complex_float()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									complex double</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_complex()</p>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td width="150" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm"><p>
+									complex long double</p>
+								</td>
+								<td width="236" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm"><p>
+									msp_vector_allocate_long_complex()</p>
+								</td>
+							</tr>
+						</table>
+					</dl>
+				</dl>
+			</dl>
+		</dl>
+	</dl>
+</dl>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<p style="margin-left: 4cm">Vector jest zdefiniowany następująco</p>
+<p style="margin-left: 4cm"><span style="background: #ffffff">typedef
+struct msp_vector{</span></p>
+<p style="margin-left: 4cm"><span style="background: #ffffff">double*
+data;</span></p>
+<p style="margin-left: 4cm"><span style="background: #ffffff">size_t
+size;</span></p>
+<p style="margin-left: 4cm"><span style="background: #ffffff">}msp_vector,
+msp_vector_double;</span></p>
+<p style="margin-left: 4cm">Gdzie data jest wskaźnikiem na tablice
+danych przechowywanych przez vector,</p>
+<p style="margin-left: 4cm">natomiast size jest zmienna typu size_t i
+określa ilość przechowywanych wartości.</p>
+<h2 class="western" style="margin-left: 2cm">ALLOCATING</h2>
+<h3 class="western" style="margin-left: 4cm">msp_vector*
+msp_vector_allocate(size_t size);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_free(msp_vector* vector);</h3>
+<h2 class="western" style="margin-left: 2cm">ACCESSING</h2>
+<h3 class="western" style="margin-left: 4cm">double
+msp_vector_get(const msp_vector* vec, const size_t i);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_set(msp_vector* vec, const size_t i, double x);</h3>
+<p style="margin-left: 8cm"><br/>
+<br/>
+
+</p>
+<h3 class="western" style="margin-left: 4cm">double*
+msp_vector_get_ptr(const msp_vector* vec, const size_t i);</h3>
+<p style="margin-left: 8cm"><br/>
+<br/>
+
+</p>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_set_all(msp_vector* vec, double x);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_set_zero(msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_set_basis(msp_vector* vec, size_t i);</h3>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-left: 2cm">READING AND WRITING</h2>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_fscanf(FILE* stream, msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_fprintf(FILE* stream, const char* format, const
+msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_fprintf_with_size(FILE* stream, const char* format, const
+msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_fscanf_with_size(FILE* stream, msp_vector* vec);</h3>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-left: 2cm">COPY</h2>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_memcpy(msp_vector* dest, msp_vector* src);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_swap(msp_vector* v, msp_vector* q);</h3>
+<p style="margin-left: 8cm"><br/>
+<br/>
+
+</p>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_swap_elements(msp_vector* vector, size_t i, size_t j);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_reverse(msp_vector* v);</h3>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-left: 2cm">OPERATIONS</h2>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_add(msp_vector* vec, const msp_vector* b);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_sub(msp_vector* vec, const msp_vector* b);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_mul(msp_vector* vec, const msp_vector* b);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_div(msp_vector* vec, const msp_vector* b);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_scale(msp_vector* vec, const double x);</h3>
+<h3 class="western" style="margin-left: 4cm">void
+msp_vector_add_constant(msp_vector* vec, const double x);</h3>
+<h3 class="western" style="margin-left: 4cm">double
+msp_vector_sum(const msp_vector* vec);</h3>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-left: 2cm">PROPERTIES</h2>
+<h3 class="western" style="margin-left: 4cm">int
+msp_vector_isnull(const msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">int
+msp_vector_ispositive(const msp_vector* vec);</h3>
+<h3 class="western" style="margin-left: 4cm">int
+msp_vector_isngeative(const msp_vector* vec);</h3>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+<p style="margin-left: 4cm"><br/>
+<br/>
+
+</p>
+</body>
+</html>

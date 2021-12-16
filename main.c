@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include "vector.h"
 #include "matrix.h"
+#include "complex.h"
 int main() {
-    msp_matrix* mat = msp_matrix_allocate(4, 5);
-    for(int i = 0; i < 4; i ++) {
-        for(int j = 0 ; j < 5; j++) {
-            mat->data[i][j] = i*5 + j;
-        }
-    }
-    FILE* file;
-    file = fopen("test.txt", "w");
-    msp_matrix_fprintf_with_size(file, "%f", mat);
+
+    msp_complex z = msp_complex_create(3 ,4);
+    msp_complex z2 = msp_complex_sqrt_real(-5);
+    printf("%f %f\n", z2.real, z2.imag);
+    z2 = msp_complex_mul(z2, z2);
+    printf("%f %f", z2.real, z2.imag);
+
+
+
 
 
     return 0;
