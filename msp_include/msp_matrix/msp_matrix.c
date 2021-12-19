@@ -2,7 +2,7 @@
 // Created by programowanie on 06.12.2021.
 //
 
-#include "matrix.h"
+#include "msp_matrix.h"
 //ALLOCATING
 msp_matrix* msp_matrix_allocate(size_t n, size_t m) {
     //DECLARING NEW MATRIX
@@ -199,7 +199,7 @@ void msp_matrix_swap(msp_matrix* a, msp_matrix* b) {
 //ROWS AND COLUMNS
 void msp_matrix_get_row(msp_matrix * mat, msp_vector* vec, size_t i) {
     if(mat == NULL) {
-        perror("matrix is Null-pointer\n");
+        perror("msp_matrix is Null-pointer\n");
         abort();
     }
     if(vec == NULL) {
@@ -221,7 +221,7 @@ void msp_matrix_get_row(msp_matrix * mat, msp_vector* vec, size_t i) {
 }
 void msp_matrix_get_col(const msp_matrix* mat, msp_vector* vec, size_t i) {
     if(mat == NULL) {
-        perror("matrix is Null-pointer\n");
+        perror("msp_matrix is Null-pointer\n");
         abort();
     }
     if(vec == NULL) {
@@ -257,7 +257,7 @@ void msp_matrix_set_row(msp_matrix* mat, const msp_vector* vec, size_t i) {
             }
         }
         else {
-            perror("mat and vector is not the same lenght");
+            perror("mat and msp_vector is not the same lenght");
         }
     }
 }
@@ -277,7 +277,7 @@ void msp_matrix_set_col(msp_matrix* mat, const msp_vector* vec, size_t i) {
             }
         }
         else {
-            perror("mat and vector is not the same lenght");
+            perror("mat and msp_vector is not the same lenght");
         }
     }
 }
@@ -350,7 +350,7 @@ void msp_matrix_transpose(msp_matrix* dest, const msp_matrix* src) {
 //OPERATIONS
 void msp_matrix_add(msp_matrix* a, const msp_matrix* b) {
     if(a == NULL || b == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
@@ -371,7 +371,7 @@ void msp_matrix_add(msp_matrix* a, const msp_matrix* b) {
 }
 void msp_matrix_sub(msp_matrix* a, const msp_matrix* b) {
     if(a == NULL || b == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
@@ -390,7 +390,7 @@ void msp_matrix_sub(msp_matrix* a, const msp_matrix* b) {
 }
 void msp_matrix_mul_elements(msp_matrix* a, const msp_matrix* b) {
     if(a == NULL || b == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
@@ -413,12 +413,12 @@ msp_matrix* msp_matrix_mul(const msp_matrix* a, const msp_matrix* b) {
         return NULL;
     }
     else if(a->n == 0 || a->m == 0 || b->n == 0 || b->m == 0) {
-        perror("matrix is empty\n");
+        perror("msp_matrix is empty\n");
         return NULL;
     }
     else {
         if(a->n != a->m) {
-            perror("cant mul matrix when a->m != b->n\n");
+            perror("cant mul msp_matrix when a->m != b->n\n");
             return NULL;
         }
         else {
@@ -439,7 +439,7 @@ msp_matrix* msp_matrix_mul(const msp_matrix* a, const msp_matrix* b) {
 }
 void msp_matrix_div_elements(msp_matrix* a, const msp_matrix* b) {
     if(a == NULL || b == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
@@ -466,12 +466,12 @@ void msp_matrix_div_elements(msp_matrix* a, const msp_matrix* b) {
 }
 void msp_matrix_scale(msp_matrix* a, const double x) {
     if(a == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
         if(a->n == 0 || a->m == 0) {
-            perror("a is empty matrix\n");
+            perror("a is empty msp_matrix\n");
             return;
         }
         else {
@@ -485,16 +485,16 @@ void msp_matrix_scale(msp_matrix* a, const double x) {
 }
 void msp_matrix_scale_columns(msp_matrix* a, const msp_vector* b) {
     if(a == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
         if(a->n == 0 || a->m == 0) {
-            perror("a is empty matrix\n");
+            perror("a is empty msp_matrix\n");
             return;
         }
         else if(a->n != b->size) {
-            perror("a->n and vector b is not the same lenght");
+            perror("a->n and msp_vector b is not the same lenght");
             return;
 
         }
@@ -509,16 +509,16 @@ void msp_matrix_scale_columns(msp_matrix* a, const msp_vector* b) {
 }
 void msp_matrix_scale_rows(msp_matrix* a, const msp_vector* b) {
     if(a == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
         if(a->n == 0 || a->m == 0) {
-            perror("a is empty matrix\n");
+            perror("a is empty msp_matrix\n");
             return;
         }
         else if(a->m != b->size) {
-            perror("a->n and vector b is not the same lenght");
+            perror("a->n and msp_vector b is not the same lenght");
             return;
 
         }
@@ -533,12 +533,12 @@ void msp_matrix_scale_rows(msp_matrix* a, const msp_vector* b) {
 }
 void msp_matrix_add_constant(msp_matrix* a, const double x) {
     if(a == NULL) {
-        perror("matrix is NULL pointer\n");
+        perror("msp_matrix is NULL pointer\n");
         return;
     }
     else {
         if(a->n == 0 || a->m == 0) {
-            perror("a is empty matrix\n");
+            perror("a is empty msp_matrix\n");
             return;
         }
         else {
@@ -561,7 +561,7 @@ double msp_matrix_det(const msp_matrix* a) {
             return 0;
         }
         else if(a->n != a->m) {
-            perror("det is only for quadratic matrix\n");
+            perror("det is only for quadratic msp_matrix\n");
             return 0;
         }
         else {

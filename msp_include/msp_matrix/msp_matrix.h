@@ -2,13 +2,13 @@
 // Created by programowanie on 06.12.2021.
 //
 
-#ifndef MSP_MATRIX_H
-#define MSP_MATRIX_H
+#ifndef MSP_MSP_MATRIX_H
+#define MSP_MSP_MATRIX_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
-#include "vector.h"
-typedef struct matrix {
+#include "../msp_vector/msp_vector.h"
+typedef struct msp_matrix {
     double **data;
     size_t n;
     size_t m;
@@ -62,4 +62,4 @@ int msp_matrix_ispos(const msp_matrix* mat);
 int msp_matrix_isneg(const msp_matrix* mat);
 
 double det ( int n, int w, const int * WK, double ** A );
-#endif //MSP_MATRIX_H
+#endif //MSP_MSP_MATRIX_H

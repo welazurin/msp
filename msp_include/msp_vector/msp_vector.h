@@ -2,8 +2,8 @@
 // Created by programowanie on 06.12.2021.
 //
 
-#ifndef MSP_VECTOR_H
-#define MSP_VECTOR_H
+#ifndef MSP_MSP_VECTOR_H
+#define MSP_MSP_VECTOR_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -51,4 +51,4 @@ int msp_vector_ispositive(const msp_vector* vec);
 int msp_vector_isngeative(const msp_vector* vec);
 
 
-#endif //MSP_VECTOR_H
+#endif //MSP_MSP_VECTOR_H

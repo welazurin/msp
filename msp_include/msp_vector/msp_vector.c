@@ -1,19 +1,19 @@
 //
 // Created by programowanie on 06.12.2021.
 //
-#include "vector.h"
+#include "msp_vector.h"
 
 msp_vector* msp_vector_allocate(size_t size) {
     msp_vector* vector;
     vector = malloc(sizeof(*vector));
     if(vector == NULL) {
-        perror("Bad allocation od vector");
+        perror("Bad allocation od msp_vector");
         return NULL;
     }
     vector->size = size;
     vector->data = malloc(sizeof(*vector->data) * size);
     if(vector->data == NULL) {
-        perror("Bad allocation od vector->data");
+        perror("Bad allocation od msp_vector->data");
         return NULL;
     }
     return vector;

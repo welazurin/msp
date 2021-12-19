@@ -1,12 +1,13 @@
 //
 // Created by programowanie on 15.12.2021.
 //
-#ifndef MSP_COMPLEX_H
-#define MSP_COMPLEX_H
+#ifndef MSP_MSP_COMPLEX_H
+#define MSP_MSP_COMPLEX_H
 #include <math.h>
 #include <errno.h>
 #include <stdlib.h>
 #define PI 3.14159265358979323846
+#include <time.h>
 
 typedef struct msp_complex {
     double real;
@@ -136,4 +137,4 @@ msp_complex msp_complex_arccsch(msp_complex z);
 
 
 
-#endif //MSP_COMPLEX_H
+#endif //MSP_MSP_COMPLEX_H
