@@ -1,10 +1,8 @@
 //
 // Created by programowanie on 15.12.2021.
 //
-#include <stdio.h>
 #include "msp_complex.h"
-#include <math.h>
-#include "../msp_logger/msp_log.h"
+
 
 #define MSP_COMPLEX "msp_complex.h"
 // CREATING
@@ -60,9 +58,12 @@ double msp_complex_get_module(msp_complex a) {
 }
 
 double msp_complex_get_arg(msp_complex b) {
+    if(b.imag == 0 && b.real == 0) {
+        return 0;
+    }
     double mod = msp_complex_get_module(b);
-    double result = acos(b.real/mod);
-    msp_logger(MSP_COMPLEX, "msp_complex_get_arg", "result = mod(a), %f = arg(%c)", result, b);
+    double result = atan2(b.imag, b.real);
+    msp_logger(MSP_COMPLEX, "msp_complex_get_arg", "result = arg(a), %f = arg(%c)", result, b);
     return result;
 }
 
@@ -88,6 +89,7 @@ msp_complex msp_complex_div(msp_complex a, msp_complex b) {
     msp_complex z;
     if(b.real == 0 && b.imag == 0) {
         perror("cant div by 0");
+        msp_logger(MSP_COMPLEX, "msp_complex_div_real", "ERROR try do div by 0");
         return z;
     }
     double temp = b.real*b.real + b.imag*b.imag;
@@ -167,7 +169,7 @@ msp_complex msp_complex_div_real(msp_complex a, double x) {
         msp_complex z;
         z.real = 0;
         z.imag = 0;
-
+        msp_logger(MSP_COMPLEX, "msp_complex_div_real", "ERROR try do div by 0");
         return z;
     }
     else {
@@ -185,6 +187,7 @@ msp_complex msp_complex_div_imag(msp_complex a, double x) {
         msp_complex z;
         z.real = 0;
         z.imag = 0;
+        msp_logger(MSP_COMPLEX, "msp_complex_div_imag", "ERROR try do div by 0");
         return z;
     }
     else {
@@ -261,13 +264,27 @@ msp_complex msp_complex_sqrt_real(double x) {
 msp_complex msp_complex_pow(msp_complex a, msp_complex x) {
     double arg = msp_complex_get_arg(a);
     double mod = msp_complex_get_module(a);
-    //a = mod * e^(argi)
-
+    msp_complex loga = msp_complex_log(a);
+    msp_complex result = msp_complex_exp(msp_complex_mul(loga, x));
+    msp_logger(MSP_COMPLEX, "msp_complex_pow", "z = a^x, %c = %c ^ %c", result,a, x);
+    return result;
 }
 
-msp_complex msp_complex_pow_real(msp_complex a, double x);
+msp_complex msp_complex_pow_real(msp_complex a, double x) {
+    msp_complex z;
+    z.real = x;
+    z.imag = 0;
+    msp_complex result = msp_complex_pow(a, z);
+    msp_logger(MSP_COMPLEX, "msp_complex_pow", "z = a^x, %c = %c ^ %c", result,a, x);
+    return result;
+}
 
 msp_complex msp_complex_exp(msp_complex z) {
+    if(z.real == 0 && z.imag == 0) {
+        msp_complex result = msp_complex_create(1,0);
+        msp_logger(MSP_COMPLEX, "msp_complex_exp", "z = exp(a), %c = exp(%c)", result, z);
+        return result;
+    }
     msp_complex result;
     result.real = exp(z.real)*cos(z.imag);
     result.imag = exp(z.real) * sin(z.imag);
@@ -276,12 +293,39 @@ msp_complex msp_complex_exp(msp_complex z) {
 }
 
 msp_complex msp_complex_log(msp_complex z) {
-
+    msp_complex result;
+    double mod = msp_complex_get_module(z);
+    double arg = msp_complex_get_arg(z);
+    result.real = log(mod);
+    result.imag = arg;
+    msp_logger(MSP_COMPLEX, "msp_complex_log", "z = log(a), %c = log(%c)", result, z);
+    return result;
 }
 
-msp_complex msp_complex_log10(msp_complex z);
+msp_complex msp_complex_log10(msp_complex z) {
+    msp_complex result = msp_complex_log(z);
+    msp_complex log10;
+    log10.imag = 0;
+    log10.real = LOG10;
+    result = msp_complex_div(result, log10);
+    msp_logger(MSP_COMPLEX, "msp_complex_log10", "z = log10(a), %c = log10(%c)", result, z);
+    return result;
+}
 
-msp_complex msp_complex_log_b(msp_complex z, msp_complex b);
+msp_complex msp_complex_log_b(msp_complex z, msp_complex b) {
+    if(b.real == 0 && b.imag == 0) {
+        perror("cant log when b = 0");
+        msp_logger(MSP_COMPLEX, "msp_complex_log10", "error b is equal to 0");
+        return msp_complex_create(0,0);
+    }
+    msp_complex result;
+    msp_complex logb;
+    logb = msp_complex_log(b);
+    result = msp_complex_log(z);
+    result = msp_complex_div(result, logb);
+    msp_logger(MSP_COMPLEX, "msp_complex_log10", "z = log10(a), %c = log10(%c)", result, z);
+    return result;
+}
 
 //Trygonometry
 
@@ -313,53 +357,54 @@ msp_complex msp_complex_cos(msp_complex z) {
     return result;
 }
 
-msp_complex msp_complex_tan(msp_complex z);
+msp_complex msp_complex_tan(msp_complex z) {
+    msp_complex cos = msp_complex_cos(z);
+    if(cos.real == 0 && cos.imag == 0) {
+        perror("tan is infinity");
+        msp_logger(MSP_COMPLEX, "msp_complex_tan", "tan is infinity");
+        return msp_complex_create(0,0);
+    }
+    msp_complex result = msp_complex_div(msp_complex_sin(z), cos);
+    msp_logger(MSP_COMPLEX, "msp_complex_tan", "z = tan(a), %c = tan(%c)", result, z);
+    return result;
+}
 
-msp_complex msp_complex_cot(msp_complex z);
+msp_complex msp_complex_cot(msp_complex z) {
+    msp_complex sin = msp_complex_sin(z);
+    if(sin.real == 0 && sin.imag == 0) {
+        perror("ctan is infinity");
+        msp_logger(MSP_COMPLEX, "msp_complex_cot", "cot is infinity");
+        return msp_complex_create(0,0);
+    }
+    msp_complex result = msp_complex_div(msp_complex_cos(z), sin);
+    msp_logger(MSP_COMPLEX, "msp_complex_cot", "z = cot(a), %c = cot(%c)", result, z);
+    return result;
+}
 
-msp_complex msp_complex_sec(msp_complex z);
+msp_complex msp_complex_sec(msp_complex z) {
+    msp_complex sin = msp_complex_sin(z);
+    if(sin. real == 0 && sin.imag == 0) {
+        perror("sin is infinity");
+        msp_logger(MSP_COMPLEX, "msp_complex_sin", "sin is infinity");
+        return msp_complex_create(0,0);
+    }
+    else {
+        msp_complex result = msp_complex_div(msp_complex_create(1, 0), sin);
+        msp_logger(MSP_COMPLEX, "msp_complex_sec", "z = sec(a), %c = sec(%c)", result, z);
+        return result;
+    }
+}
 
-msp_complex msp_complex_csc(msp_complex z);
-
-// inverse Trygonometry
-
-msp_complex msp_complex_arcsin(msp_complex z);
-
-msp_complex msp_complex_arccos(msp_complex z);
-
-msp_complex msp_complex_arctan(msp_complex z);
-
-msp_complex msp_complex_arccot(msp_complex z);
-
-msp_complex msp_complex_arcsec(msp_complex z);
-
-msp_complex msp_complex_arccsc(msp_complex z);
-
-//hyberbolic functions
-
-msp_complex msp_complex_sinh(msp_complex z);
-
-msp_complex msp_complex_cosh(msp_complex z);
-
-msp_complex msp_complex_tanh(msp_complex z);
-
-msp_complex msp_complex_coth(msp_complex z);
-
-msp_complex msp_complex_sech(msp_complex z);
-
-msp_complex msp_complex_csch(msp_complex z);
-
-// inverse hyberbolic functions
-
-msp_complex msp_complex_arcsinh(msp_complex z);
-
-msp_complex msp_complex_arccosh(msp_complex z);
-
-msp_complex msp_complex_arctanh(msp_complex z);
-
-msp_complex msp_complex_arccoth(msp_complex z);
-
-msp_complex msp_complex_arcsech(msp_complex z);
-
-msp_complex msp_complex_arccsch(msp_complex z);
-
+msp_complex msp_complex_csc(msp_complex z) {
+    msp_complex csc = msp_complex_cos(z);
+    if(csc. real == 0 && csc.imag == 0) {
+        perror("csc is infinity");
+        msp_logger(MSP_COMPLEX, "msp_complex_csc", "csc is infinity");
+        return msp_complex_create(0,0);
+    }
+    else {
+        msp_complex result = msp_complex_div(msp_complex_create(1, 0), csc);
+        msp_logger(MSP_COMPLEX, "msp_complex_csc", "z = csc(a), %c = csc(%c)", result, z);
+        return result;
+    }
+}

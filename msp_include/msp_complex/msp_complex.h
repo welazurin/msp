@@ -6,8 +6,12 @@
 #include <math.h>
 #include <errno.h>
 #include <stdlib.h>
-#define PI 3.14159265358979323846
+#include <stdio.h>
+#include <math.h>
 #include <time.h>
+#include "../msp_logger/msp_log.h"
+#define LOG10 2.30258509299404568402
+#define PI 3.14159265358979323846
 
 typedef struct msp_complex {
     double real;
@@ -92,49 +96,5 @@ msp_complex msp_complex_cot(msp_complex z);
 msp_complex msp_complex_sec(msp_complex z);
 
 msp_complex msp_complex_csc(msp_complex z);
-
-// inverse Trygonometry
-
-msp_complex msp_complex_arcsin(msp_complex z);
-
-msp_complex msp_complex_arccos(msp_complex z);
-
-msp_complex msp_complex_arctan(msp_complex z);
-
-msp_complex msp_complex_arccot(msp_complex z);
-
-msp_complex msp_complex_arcsec(msp_complex z);
-
-msp_complex msp_complex_arccsc(msp_complex z);
-
-//hyberbolic functions
-
-msp_complex msp_complex_sinh(msp_complex z);
-
-msp_complex msp_complex_cosh(msp_complex z);
-
-msp_complex msp_complex_tanh(msp_complex z);
-
-msp_complex msp_complex_coth(msp_complex z);
-
-msp_complex msp_complex_sech(msp_complex z);
-
-msp_complex msp_complex_csch(msp_complex z);
-
-// inverse hyberbolic functions
-
-msp_complex msp_complex_arcsinh(msp_complex z);
-
-msp_complex msp_complex_arccosh(msp_complex z);
-
-msp_complex msp_complex_arctanh(msp_complex z);
-
-msp_complex msp_complex_arccoth(msp_complex z);
-
-msp_complex msp_complex_arcsech(msp_complex z);
-
-msp_complex msp_complex_arccsch(msp_complex z);
-
-
 
 #endif //MSP_MSP_COMPLEX_H

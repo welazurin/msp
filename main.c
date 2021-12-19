@@ -9,7 +9,10 @@ int main() {
     msp_complex z;
     z.real = 3;
     z.imag = 2;
-    msp_complex z2 = msp_complex_cos(z);
-    printf("%f %f", z2.real, z2.imag);
+    msp_complex z2;
+    z2.real = 4;
+    z2.imag = -1;
+    msp_complex z3 = msp_complex_pow(z, z2);
+    printf("%f %f", z3.real, z3.imag);
     return 0;
 }

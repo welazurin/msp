@@ -50,6 +50,26 @@ double* msp_vector_get_ptr(const msp_vector* vec, const size_t i) {
         return &(vec->data[i]);
     }
 }
+void msp_vector_set_xy(msp_vector* vec, double xmin, double max, size_t i) {
+    if(vec->size != i) {
+        msp_vector_free(vec);
+        vec = msp_vector_allocate(i);
+    }
+    double separator = (max-xmin)/(double)i;
+    for(int j = 0; j < i; j++) {
+        vec->data[j] = xmin+separator*j;
+    }
+}
+void msp_vector_set_xi(msp_vector* vec, double xmin, double sep, size_t i) {
+    if(vec->size != i) {
+        msp_vector_free(vec);
+        vec = msp_vector_allocate(i);
+    }
+    for(int j = 0; j < i; j++) {
+        vec->data[j] = xmin+sep*j;
+    }
+}
+
 void msp_vector_set_all(msp_vector* vec, double x) {
     if(vec->size == 0) {
         return;

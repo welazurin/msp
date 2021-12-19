@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "../msp_vector/msp_vector.h"
+#include "../msp_logger/msp_log.h"
+#define MSP_MATRIX "msp_matrix.h"
 typedef struct msp_matrix {
     double **data;
     size_t n;

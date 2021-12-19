@@ -11,12 +11,15 @@ msp_matrix* msp_matrix_allocate(size_t n, size_t m) {
     mat = malloc(sizeof(*mat));
     if(mat == NULL) {
         perror("Bad allocation memory in msp_matrix_allocate\n");
+        msp_logger(MSP_MATRIX, "msp_matrix_allocate", "ERROR in allocating memory for matrix");
         return NULL;
     }
     else {
         mat->data = malloc(sizeof(*(mat->data))*n);
         if(mat->data == NULL) {
             perror("Bad allocation memory in msp_matrix_allocate\n");
+            msp_logger(MSP_MATRIX, "msp_matrix_allocate", "ERROR in allocating memory for matrix->data");
+
             free(mat->data);
             return NULL;
         }
@@ -28,18 +31,21 @@ msp_matrix* msp_matrix_allocate(size_t n, size_t m) {
                 }
                 free(mat->data);
                 perror("Bad allocation memory\n");
+                msp_logger(MSP_MATRIX, "msp_matrix_allocate", "ERROR in allocating memory for matrix->data[i]");
                 return NULL;
             }
         }
         //END OF ALLOCATING
         mat->n = n;
         mat->m = m;
+        msp_logger(MSP_MATRIX, "msp_matrix_allocate", "Success allocating matrix");
         return mat;
     }
 }
 
 void msp_matrix_free(msp_matrix* mat) {
     if(mat == NULL) {
+        msp_logger(MSP_MATRIX, "msp_matrix_free", "Matrix is null-pointer");
         return;
     }
     else {
@@ -48,36 +54,43 @@ void msp_matrix_free(msp_matrix* mat) {
         }
         free(mat->data);
         mat = NULL;
+        msp_logger(MSP_MATRIX, "msp_matrix_free", "Success free matrix");
     }
 }
 
 //ACCESSING
 double msp_matrix_get(const msp_matrix* mat, size_t i, size_t j) {
     if(i > mat->n-1 || j >  mat->m-1) {
+        msp_logger(MSP_MATRIX, "msp_matrix_get", "ERROR out of range i > mat->n-1 or j > mat->m-1 i - %d,mat->n-1, j-%d, mat->m-1", i, mat->n-1, j, mat->m-1);
         perror("Error in access to un allocating memory : OUT OF RANGE\n");
         abort();
     }
     else {
+        msp_logger(MSP_MATRIX, "msp_matrix_get", "Success returned value %f", mat->data[i][j]);
         return mat->data[i][j];
     }
 }
 
 void msp_matrix_set(msp_matrix* mat, size_t i, size_t j, double x) {
     if(i > mat->n-1 || j >  mat->m-1) {
+        msp_logger(MSP_MATRIX, "msp_matrix_set", "ERROR out of range i > mat->n-1 or j > mat->m-1 i - %d,mat->n-1, j-%d, mat->m-1", i, mat->n-1, j, mat->m-1);
         perror("Error in access to un allocating memory : OUT OF RANGE\n");
         return;
     }
     else {
         mat->data[i][j] = x;
+        msp_logger(MSP_MATRIX, "msp_matrix_set", "Success seting value %f", mat->data[i][j]);
     }
 }
 
 double* msp_matrix_get_ptr(msp_matrix* mat, size_t i, size_t j) {
     if(i > mat->n-1 || j >  mat->m-1) {
+        msp_logger(MSP_MATRIX, "msp_matrix_get_ptr", "ERROR out of range i > mat->n-1 or j > mat->m-1 i - %d,mat->n-1, j-%d, mat->m-1", i, mat->n-1, j, mat->m-1);
         perror("Error in access to un allocating memory : OUT OF RANGE\n");
         abort();
     }
     else {
+        msp_logger(MSP_MATRIX, "msp_matrix_get_ptr", "Success getting pointer %p", &(mat->data[i][j]));
         return &(mat->data[i][j]);
     }
 }
@@ -86,6 +99,7 @@ double* msp_matrix_get_ptr(msp_matrix* mat, size_t i, size_t j) {
 
 void msp_matrix_set_all(msp_matrix* mat, double x) {
     if(mat == NULL) {
+        msp_logger(MSP_MATRIX, "msp_matrix_set_all", "ERROR matrix is null-pointer");
         perror("mat is Null-pointer\n");
         abort();
     }
@@ -105,6 +119,7 @@ void msp_matrix_set_all(msp_matrix* mat, double x) {
 
 void msp_matrix_set_ones(msp_matrix* mat) {
     if(mat == NULL) {
+        msp_logger(MSP_MATRIX, "msp_matrix_set_ones", "ERROR matrix is null-pointer");
         perror("mat is Null-pointer\n");
         abort();
     }
@@ -134,6 +149,11 @@ void msp_matrix_set_zero(msp_matrix* mat) {
 }
 //READING WRITING
 void msp_matrix_fprintf(FILE* stream, const char* format, const msp_matrix* mat) {
+    if(mat == NULL) {
+        msp_logger(MSP_MATRIX, "msp_matrix_fprintf", "ERROR matrix is null-pointer");
+        perror("matrix is null pointer");
+        return;
+    }
     for(int i = 0; i < mat->n; i++) {
         for(int j = 0; j < mat->m; j++) {
             fprintf(stream, format, mat->data[i][j]);

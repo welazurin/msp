@@ -75,6 +75,10 @@ void msp_logger(const char* namefile, const char* fun, const char* text, ...) {
                     msp_complex z = va_arg(ap, msp_complex);
                     fprintf(file,"(%f)+(%f)i", z.real, z.imag);
                 }
+                else if(text[i] == 'p') {
+                    double* f = va_arg(ap, double*);
+                    fprintf(file, "%p", f);
+                }
                 else{
                     perror("error");
                 }
