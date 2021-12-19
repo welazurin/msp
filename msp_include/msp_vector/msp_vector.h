@@ -19,6 +19,7 @@ double msp_vector_get(const msp_vector* vec, const size_t i);
 void msp_vector_set(msp_vector* vec, const size_t i, double x);
 
 double* msp_vector_get_ptr(const msp_vector* vec, const size_t i);
+void msp_vector_set_tab(msp_vector* vec, double* data, size_t size);
 void msp_vector_set_xy(msp_vector* vec, double xmin, double max, size_t i);
 void msp_vector_set_xi(msp_vector* vec, double xmin, double sep, size_t i);
 void msp_vector_set_all(msp_vector* vec, double x);

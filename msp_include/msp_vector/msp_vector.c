@@ -50,6 +50,20 @@ double* msp_vector_get_ptr(const msp_vector* vec, const size_t i) {
         return &(vec->data[i]);
     }
 }
+void msp_vector_set_tab(msp_vector* vec, double* data, size_t size) {
+    if(vec == NULL) {
+        return;
+    }
+    else {
+        if(vec->size != size) {
+            free(vec);
+            vec = msp_vector_allocate(size);
+        }
+        for(int i = 0; i < size; i++) {
+            vec->data[i] = data[i];
+        }
+    }
+}
 void msp_vector_set_xy(msp_vector* vec, double xmin, double max, size_t i) {
     if(vec->size != i) {
         msp_vector_free(vec);

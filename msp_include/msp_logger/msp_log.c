@@ -79,6 +79,10 @@ void msp_logger(const char* namefile, const char* fun, const char* text, ...) {
                     double* f = va_arg(ap, double*);
                     fprintf(file, "%p", f);
                 }
+                else if(text[i] == 's') {
+                    msp_poly* poly = va_arg(ap, msp_poly*);
+                    msp_poly_fprintf(file, poly);
+                }
                 else{
                     perror("error");
                 }
