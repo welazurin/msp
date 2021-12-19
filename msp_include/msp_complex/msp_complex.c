@@ -408,3 +408,12 @@ msp_complex msp_complex_csc(msp_complex z) {
         return result;
     }
 }
+
+int msp_complex_iszero (msp_complex z) {
+    if(z.imag == 0 && z.real == 0) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}

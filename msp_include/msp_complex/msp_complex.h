@@ -97,4 +97,5 @@ msp_complex msp_complex_sec(msp_complex z);
 
 msp_complex msp_complex_csc(msp_complex z);
 
+int msp_complex_iszero (msp_complex z);
 #endif //MSP_MSP_COMPLEX_H

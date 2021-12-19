@@ -320,7 +320,7 @@ void msp_matrix_swap_rows(msp_matrix* mat, size_t i, size_t j) {
         else {
             for(int k = 0; k < mat->m; k++) {
                 double temp = 0;
-                mat->data[i][k] = temp;
+                temp = mat->data[i][k];
                 mat->data[i][k] = mat->data[j][k];
                 mat->data[j][k] = temp;
             }
@@ -344,7 +344,7 @@ void msp_matrix_swap_columns(msp_matrix* mat, size_t i , size_t j){
             else {
                 for(int k = 0; k < mat->n; k++) {
                     double temp = 0;
-                    mat->data[k][i] = temp;
+                    temp = mat->data[k][i];
                     mat->data[k][i] = mat->data[k][j];
                     mat->data[k][j] = temp;
                 }
@@ -386,8 +386,6 @@ void msp_matrix_add(msp_matrix* a, const msp_matrix* b) {
             }
         }
     }
-
-
 }
 void msp_matrix_sub(msp_matrix* a, const msp_matrix* b) {
     if(a == NULL || b == NULL) {
