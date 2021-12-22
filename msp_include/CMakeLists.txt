@@ -1,0 +1,7 @@
+include(msp_include/msp_complex/CMakeLists.txt)
+include(msp_include/msp_data/CMakeLists.txt)
+include(msp_include/msp_interface/CMakeLists.txt)
+include(msp_include/msp_logger/CMakeLists.txt)
+include(msp_include/msp_matrix/CMakeLists.txt)
+include(msp_include/msp_poly/CMakeLists.txt)
+include(msp_include/msp_vector/CMakeLists.txt)
