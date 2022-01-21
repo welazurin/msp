@@ -3,7 +3,7 @@
 //
 
 #include "msp_interface.h"
-msp_interface* msp_interface_create() {
+/*msp_interface* msp_interface_create() {
     msp_interface* interface;
     interface = malloc(sizeof(*interface));
     if(interface == NULL) {
@@ -32,4 +32,4 @@ msp_interface* msp_interface_create() {
     gtk_fixed_put(GTK_FIXED(interface->container), interface->textView, 10, 10);
     return interface;
 
-}
+}*/

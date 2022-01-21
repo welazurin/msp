@@ -262,6 +262,16 @@ msp_complex msp_complex_sqrt_real(double x) {
 }
 
 msp_complex msp_complex_pow(msp_complex a, msp_complex x) {
+    if(msp_complex_iszero(x)) {
+        msp_complex result = msp_complex_create(1, 0);
+        msp_logger(MSP_COMPLEX, "msp_complex_pow", "z = a^x, %c = %c ^ %c", result,a, x);
+        return result;
+    }
+    if(msp_complex_iszero(a)) {
+        msp_complex result = msp_complex_create(0, 0);
+        msp_logger(MSP_COMPLEX, "msp_complex_pow", "z = a^x, %c = %c ^ %c", result,a, x);
+        return result;
+    }
     double arg = msp_complex_get_arg(a);
     double mod = msp_complex_get_module(a);
     msp_complex loga = msp_complex_log(a);

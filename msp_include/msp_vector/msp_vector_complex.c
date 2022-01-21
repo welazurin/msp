@@ -132,11 +132,8 @@ void msp_vector_complex_fprintf(FILE* stream, char* format, const msp_vector_com
         return;
     }
     else {
-        char* format_complex = strcat(format, " " );
-        format_complex = strcat(format_complex, format);
-        format_complex = strcat(format_complex, "i");
         for(int i = 0; i < vec->size; i++) {
-            fprintf(stream, format_complex, vec->data[i].real, vec->data[i].imag);
+            fprintf(stream, "%f %fi", vec->data[i].real, vec->data[i].imag);
             fprintf(stream, " ");
         }
     }

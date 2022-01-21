@@ -12,6 +12,7 @@
 #include <time.h>
 #include "../msp_matrix/msp_matrix.h"
 #include "../msp_complex/msp_complex.h"
+#include "../msp_poly/msp_poly.h"
 void msp_log_activate() {
     FILE* file;
     file = fopen("logger.txt", "w");
